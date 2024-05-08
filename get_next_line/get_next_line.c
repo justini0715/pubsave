@@ -36,7 +36,7 @@ int	get_text(int fd, char **buff, char **save)
 	byte = 1;
 	while (!ft_strchr(*save, '\n') && byte)
 	{
-		byte = read(fd, *buff, BUFFER_SIZE);
+		byte = read(fd, *buff, BUFF_SIZE);
 		if (byte == -1)
 			return (byte);
 		(*buff)[byte] = 0;
@@ -73,9 +73,9 @@ char	*get_next_line(int fd)
 	char		*buff;
 	char		*line;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > OPEN_MAX || BUFF_SIZE <= 0)
 		return (0);
-	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buff = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
 	if (!buff)
 		return (0);
 	if (!save)

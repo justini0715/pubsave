@@ -10,16 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # define OPEN_MAX 1024
 
 # ifndef BUFF_SIZE
 #  define BUFF_SIZE 42
 # endif
 
-# include <fcntl.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
