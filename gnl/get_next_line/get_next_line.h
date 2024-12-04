@@ -3,31 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changwpa <changwpa@student.42gyeongsan.    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:41:36 by changwpa          #+#    #+#             */
-/*   Updated: 2024/04/27 18:06:50 by changwpa         ###   ########.fr       */
+/*   Created: 2024/12/04 23:01:46 by root              #+#    #+#             */
+/*   Updated: 2024/12/04 23:02:15 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
 # define OPEN_MAX 1024
+# define BUFFER_SIZE 42
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-# include <fcntl.h>
-# include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include <stdlib.h>
+# include <stdio.h>
 
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*get_next_line(int fd);
+typedef struct s_line
+{
+    char    *buff;
+    struct s_line   *next;
+} t_line;
 
 #endif
