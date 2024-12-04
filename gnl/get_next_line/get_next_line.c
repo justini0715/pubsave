@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 23:01:49 by root              #+#    #+#             */
-/*   Updated: 2024/12/04 23:50:21 by root             ###   ########.fr       */
+/*   Updated: 2024/12/05 00:46:41 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,37 @@ void	*read_line(int fd)
 	t_line	*line_list;
 	t_line	*top;
 
-	line_list = (t_line *)malloc(sizeof(t_line));
+	line_list = (t_line *)malloc(sizeof(*line_list));
+	if (!line_list)
+		return ;
 	top = line_list;
 	byte = 1;
 	cnt = 0;
 	while (byte)
 	{
+
+		// 새 노드 생성 lstnew
+		// 노드 할당
+		// 읽기 데이터 삽입 line_list->content
+		// 조건 및 예외처리
+		line_list = (t_line *)malloc(sizeof(*line_list));
+		if (!line_list)
+			return ;
 		line_list->buff = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 		byte = read(fd, line_list->buff, BUFFER_SIZE);
 		line_list->buff[BUFFER_SIZE] = 0;
+		line_list->next = NULL;
 		printf("%s", line_list->buff);
-		// exit(EXIT_FAILURE);
 		cnt += byte;
 		if (byte < 1 || strchr(line_list->buff, '\n'))
 			break;
 		line_list = line_list->next;
 	}
+	printf("ok\n");
 	join = (char *)malloc(sizeof(char) * cnt + 1);
 	while (line_list->buff)
 	{
+		// printf("%s", line_list->buff);
 		strcpy(join, line_list->buff);
 		line_list = line_list->next;
 	}
