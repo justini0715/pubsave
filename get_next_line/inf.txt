@@ -1,0 +1,53 @@
+1. check BUFFSIZE
+2. get_next_line(fd)
+3. set_line
+        read(BUFFSIZE)
+        join buff -> *save
+        if found '\n'
+                substr *save
+                make line
+                free all
+        return line
+4. gnl <- line
+        if last
+                free all
+        return line
+
+
+--test.txt
+
+abcdefg\n
+hijklmn\n
+opqrstuv\n
+
+--
+
+
+case 1
+
+BUFFER_SIZE 8
+
+save : abcdefg\n
+
+
+case 2
+
+BUFFER_SIZE 7
+
+save : abcdefg\nhijklm
+
+
+case 3
+
+BUFFER_SIZE 25
+
+save : abcdefg\nhijklmn\nopqrstuv\n'EOF == \0'
+len = 26
+
+if ft_strchr(save, 10) --> return save[7]
+i = save[7] - save[0]
+
+line = substr(0..i)
+save = substr(i..len)
+
+return line
